@@ -126,7 +126,23 @@ vows.describe('Spotify Metadata').addBatch({
         }
     },
 
-    'Search': {}
+    'Search': {
+        'try search': {
+            'topic': function(){
+                spotify.search("Nirvana", this.callback);
+            },
+            'is returned something': function(error, results){
+                //assert.equal(results.length, 3);
+                for(var i=0;i<results.track.length;i++){
+                    console.log(results.track[i])
+                }
+                /*
+                assert.equal(results.artist, 100);
+                assert.equal(results.album, 100);
+                assert.equal(results.track, 100);*/
+            }
+        }
+    }
 }).run();
 /*
 spotify.searchAlbum("Nevermind", function(){console.log(arguments)});
