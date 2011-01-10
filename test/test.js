@@ -1,4 +1,4 @@
-var spotify = require("../lib/main").SpotifyMetadata,
+var spotify = require("../lib/main"),
     vows = require('vows'),
     assert = require('assert');
 
