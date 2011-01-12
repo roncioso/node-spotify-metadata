@@ -1,7 +1,7 @@
 {
     "name": "spotify-metadata",
     "version": "0.0.1",
-    "description": "Spotify metadata lookup and search. Works with Spotify and http uris",
+    "description": "Spotify api wrapper. Metadata lookup and search. Works with Spotify and http uris",
     "keywords": ["spotify", "spotify metadata", "lookup", "search"],
     "author": {
         "name": "Luca Manno",

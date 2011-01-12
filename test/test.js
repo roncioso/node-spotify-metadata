@@ -127,24 +127,42 @@ vows.describe('Spotify Metadata').addBatch({
     },
 
     'Search': {
-        'try search': {
+        'global search for Nirvana': {
             'topic': function(){
                 spotify.search("Nirvana", this.callback);
             },
             'is returned something': function(error, results){
-                //assert.equal(results.length, 3);
-                for(var i=0;i<results.track.length;i++){
-                    console.log(results.track[i])
-                }
-                /*
-                assert.equal(results.artist, 100);
-                assert.equal(results.album, 100);
-                assert.equal(results.track, 100);*/
+                assert.equal(results.artist.length>0, true);
+                assert.equal(results.album.length>0, true);
+                assert.equal(results.track.length>0, true);
+            }
+        },
+        'search album': {
+            'topic': function(){
+                spotify.searchAlbum("Nevermind", this.callback);
+            },
+            'check artist': function(e, res){
+                assert.equal(res[0].artists[0].name, "Nirvana");
+            }
+        },
+        'search track': {
+            'topic': function(){
+                spotify.searchTrack("About a Girl", this.callback);
+            },
+            'check artist': function(e, res){
+                assert.equal(res[0].artists[0].name, "Nirvana");
+            },
+            'check album': function(e, res){
+                assert.equal(typeof res[0].album.name, typeof "Nirvana");
+            }
+        },
+        'search artist': {
+            'topic': function(){
+                spotify.searchArtist("Nirvana", this.callback);
+            },
+            'check name': function(e, res){
+                assert.equal(res[0].name, "Nirvana");
             }
         }
     }
 }).run();
-/*
-spotify.searchAlbum("Nevermind", function(){console.log(arguments)});
-spotify.searchArtist("Nirvana", function(){console.log(arguments)});
-spotify.searchTrack("About a Girl", function(){console.log(arguments)});*/
